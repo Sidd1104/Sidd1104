@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Futuristic GitHub Profile - Local Preview</title>
+    <title>Siddhant Mohan Jha — Futuristic GitHub Profile Sandbox Preview</title>
     <style>
         :root {
-            --bg-color: #090d16;
-            --card-bg: #131822;
-            --border-color: #30363d;
-            --text-main: #c9d1d9;
-            --text-muted: #8b949e;
+            --bg-dark: #0d1117;
+            --bg-light: #ffffff;
             --accent-purple: #A855F7;
+            --accent-purple-light: #7e22ce;
+            --border-dark: #30363d;
+            --border-light: #e1e4e8;
         }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
+            background-color: #090d16;
+            color: #c9d1d9;
             margin: 0;
             padding: 2rem;
             display: flex;
@@ -28,191 +28,147 @@
         header {
             text-align: center;
             margin-bottom: 2rem;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-dark);
             padding-bottom: 1.5rem;
             width: 100%;
-            max-width: 1100px;
+            max-width: 1200px;
         }
 
-        h1 {
+        h1.page-title {
             color: var(--accent-purple);
             margin: 0 0 0.5rem 0;
-            font-size: 2rem;
-            letter-spacing: 1px;
-        }
-
-        p {
-            color: var(--text-muted);
-            margin: 0;
-        }
-
-        .preview-container {
-            width: 100%;
-            max-width: 1100px;
-            display: flex;
-            flex-direction: column;
-            gap: 2.5rem;
-        }
-
-        .section-title {
-            color: var(--accent-purple);
-            font-size: 1.25rem;
-            margin-bottom: 1.2rem;
-            text-transform: uppercase;
+            font-size: 2.2rem;
             letter-spacing: 1.5px;
-            border-left: 3px solid var(--accent-purple);
-            padding-left: 0.75rem;
         }
 
-        .header-grid {
+        p.page-desc {
+            color: #8b949e;
+            margin: 0;
+            font-size: 1.05rem;
+        }
+
+        .preview-toggle-bar {
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            justify-content: center;
+        }
+
+        .toggle-btn {
+            background: #161b22;
+            border: 1px solid var(--border-dark);
+            color: #c9d1d9;
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-family: monospace;
+            transition: all 0.2s ease;
+        }
+
+        .toggle-btn:hover, .toggle-btn.active {
+            border-color: var(--accent-purple);
+            color: var(--accent-purple);
+            box-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
+        }
+
+        .dual-preview-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(540px, 1fr));
+            gap: 2.5rem;
             width: 100%;
+            max-width: 1200px;
         }
 
-        .header-card {
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            padding: 2rem 1.5rem;
+        .readme-container {
+            border-radius: 10px;
+            border: 1px solid var(--border-dark);
+            padding: 2.5rem 2rem;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
             display: flex;
             flex-direction: column;
-            align-items: center;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            gap: 2rem;
+            overflow-x: auto;
         }
 
-        .header-card.dark-theme {
-            background-color: #0d1117;
+        .readme-container.dark-mode {
+            background-color: var(--bg-dark);
             color: #c9d1d9;
+            border-color: var(--border-dark);
         }
 
-        .header-card.light-theme {
-            background-color: #ffffff;
+        .readme-container.light-mode {
+            background-color: var(--bg-light);
             color: #24292e;
-            border-color: #e1e4e8;
+            border-color: var(--border-light);
         }
 
-        .header-card h2 {
-            margin: 0.75rem 0 0.25rem 0;
-            font-size: 1.8rem;
+        .mode-header {
             text-align: center;
-        }
-
-        .header-card h4 {
-            margin: 0 0 1rem 0;
-            text-align: center;
-        }
-
-        .header-card code {
-            background-color: #161b22;
-            color: #58a6ff;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.9rem;
-        }
-
-        .portrait-wrapper {
-            width: 260px;
-            margin-bottom: 0.5rem;
-        }
-
-        .portrait-wrapper img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .typing-banner {
-            max-width: 100%;
-            height: auto;
-            margin: 0.75rem 0 1.25rem 0;
-        }
-
-        .badges-row {
-            display: flex;
-            gap: 0.5rem;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
+            font-family: monospace;
+            font-size: 1.1rem;
+            font-weight: bold;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(168, 85, 247, 0.3);
             margin-bottom: 1rem;
         }
 
-        .badges-row img {
+        .dark-mode .mode-header { color: var(--accent-purple); }
+        .light-mode .mode-header { color: var(--accent-purple-light); }
+
+        /* GitHub Readme Markdown Simulation */
+        .readme-body {
+            display: flex;
+            flex-direction: column;
+            gap: 1.8rem;
+        }
+
+        .center-block {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .portrait-img {
+            width: 260px;
+            height: auto;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+        }
+
+        .typing-svg {
+            max-width: 100%;
+            height: auto;
+            margin: 0.75rem 0;
+        }
+
+        .badge-row {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 0.75rem 0;
+        }
+
+        .badge-row img {
             height: 28px;
         }
 
-        .view-counter img {
-            height: 22px;
-        }
-
-        .radar-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
-            gap: 2rem;
-            width: 100%;
-        }
-
-        .radar-card {
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            padding: 1.5rem;
+        .section-header {
+            font-size: 1.3rem;
+            font-weight: bold;
+            font-family: monospace;
+            margin: 1rem 0 0.5rem 0;
             display: flex;
-            flex-direction: column;
             align-items: center;
+            gap: 0.5rem;
         }
 
-        .radar-card.dark-theme {
-            background-color: #0d1117;
-            color: #c9d1d9;
-        }
+        .dark-mode .section-header { color: var(--accent-purple); }
+        .light-mode .section-header { color: var(--accent-purple-light); }
 
-        .radar-card.light-theme {
-            background-color: #ffffff;
-            color: #24292e;
-            border-color: #e1e4e8;
-        }
-
-        .radar-wrapper {
-            width: 100%;
-            max-width: 480px;
-            margin-top: 1rem;
-        }
-
-        .radar-wrapper img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
-            gap: 2rem;
-            width: 100%;
-        }
-
-        .footer-card {
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            padding: 2rem 1.5rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-        }
-
-        .footer-card.dark-theme {
-            background-color: #0d1117;
-            color: #c9d1d9;
-        }
-
-        .footer-card.light-theme {
-            background-color: #ffffff;
-            color: #24292e;
-            border-color: #e1e4e8;
-        }
-
-        .terminal-box {
+        .terminal-block {
             background-color: #161b22;
             border: 1px solid #30363d;
             border-radius: 6px;
@@ -220,140 +176,287 @@
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.85rem;
             color: #58a6ff;
-            width: 100%;
-            max-width: 500px;
-            box-sizing: border-box;
-            margin-bottom: 1.25rem;
+            line-height: 1.5;
+            overflow-x: auto;
         }
 
-        .footer-card.light-theme .terminal-box {
+        .light-mode .terminal-block {
             background-color: #f6f8fa;
             border-color: #d0d7de;
             color: #0969da;
         }
 
         .quote-box {
-            border-left: 3px solid var(--accent-purple);
+            border-left: 4px solid var(--accent-purple);
             padding-left: 1rem;
-            color: #c9d1d9;
-            margin: 0.75rem 0 1.25rem 0;
+            margin: 0.5rem 0;
             font-style: italic;
-            text-align: left;
-            max-width: 500px;
         }
 
-        .footer-card.light-theme .quote-box {
-            color: #24292e;
-            border-left-color: #7e22ce;
+        .light-mode .quote-box {
+            border-left-color: var(--accent-purple-light);
+        }
+
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            width: 100%;
+        }
+
+        .grid-card {
+            border: 1px solid var(--border-dark);
+            border-radius: 6px;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .light-mode .grid-card {
+            border-color: var(--border-light);
+        }
+
+        .grid-card img {
+            width: 100%;
+            height: auto;
+        }
+
+        .toolbox-img {
+            height: 48px;
+            width: auto;
+            max-width: 100%;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Siddhant Mohan Jha - Futuristic GitHub Profile</h1>
-        <p>Step 8: Developer Terminal Footer &amp; Contact CTA Sandbox Preview</p>
+        <h1 class="page-title">Siddhant Mohan Jha — Futuristic GitHub Profile</h1>
+        <p class="page-desc">Real-time Dual Mode (Dark &amp; Light) GitHub README Render Inspection Sandbox</p>
     </header>
 
-    <main class="preview-container">
-        <!-- HEADER PREVIEWS SECTION -->
-        <section>
-            <div class="section-title">01 // HEADER PREVIEWS (DARK &amp; LIGHT)</div>
-            <div class="header-grid">
-                <div class="header-card dark-theme">
-                    <div class="portrait-wrapper">
-                        <img src="assets/portrait-dark.png" alt="Siddhant Mohan Jha Dark Mode Portrait">
-                    </div>
+    <main class="dual-preview-grid">
+
+        <!-- =================================================================== -->
+        <!--                         GITHUB DARK MODE RENDER                      -->
+        <!-- =================================================================== -->
+        <article class="readme-container dark-mode">
+            <div class="mode-header">🌙 GITHUB DARK MODE (bg: #0d1117 | accent: #A855F7)</div>
+            
+            <div class="readme-body">
+                <!-- HEADER -->
+                <div class="center-block">
+                    <img class="portrait-img" src="assets/portrait-dark.png" alt="Siddhant Mohan Jha Dark Portrait">
                     <h2>SIDDHANT MOHAN JHA</h2>
-                    <h4><code>FULL STACK DEVELOPER</code></h4>
-                    <img class="typing-banner" src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=24&duration=2600&pause=900&color=A855F7&center=true&vCenter=true&width=500&lines=FULL+STACK+DEVELOPER;BUILDING+WEB+APPLICATIONS;BACKEND+%2B+FRONTEND;TURNING+IDEAS+INTO+SOFTWARE" alt="Typing Animation" />
-                    <div class="badges-row">
+                    <h4 style="margin:0 0 10px 0;"><code>FULL STACK DEVELOPER</code></h4>
+                    <img class="typing-svg" src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=24&duration=2600&pause=900&color=A855F7&center=true&vCenter=true&width=500&lines=FULL+STACK+DEVELOPER;BUILDING+WEB+APPLICATIONS;BACKEND+%2B+FRONTEND;TURNING+IDEAS+INTO+SOFTWARE" alt="Typing Banner" />
+                    <div class="badge-row">
                         <a href="https://www.linkedin.com/in/siddhant-mohan-jha/" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
                         <a href="mailto:SIDDMJ07@GMAIL.COM"><img src="https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
                         <a href="https://leetcode.com/u/sidd_cooks/" target="_blank"><img src="https://img.shields.io/badge/LeetCode-FFA116?style=for-the-badge&logo=leetcode&logoColor=black" alt="LeetCode" /></a>
                     </div>
-                    <div class="view-counter">
-                        <img src="https://komarev.com/ghpvc/?username=Sidd1104&color=A855F7&style=flat-square&label=profile+views" alt="Profile Views" />
+                    <img src="https://komarev.com/ghpvc/?username=Sidd1104&color=A855F7&style=flat-square&label=profile+views" alt="Views Counter" />
+                </div>
+
+                <hr style="border: 0; border-top: 1px solid #30363d;">
+
+                <!-- 01 WHOAMI -->
+                <div>
+                    <div class="section-header">⚡ 01 // WHOAMI <code>~/whoami</code></div>
+                    <div class="terminal-block">
+                        $ cat about.txt<br>
+                        &gt; NAME      : SIDDHANT MOHAN JHA<br>
+                        &gt; ROLE      : FULL STACK DEVELOPER<br>
+                        &gt; LOCATION  : INDIA<br>
+                        &gt; FOCUS     : SCALABLE WEB APPLICATIONS, BACKEND &amp; FRONTEND ARCHITECTURE
+                    </div>
+                    <div class="quote-box">
+                        <strong>📌 Overview &amp; Work Ethic:</strong> I take ownership of what I commit to and follow it through to completion. When a task requires something I don't know yet, I learn it and keep going until it's done.
                     </div>
                 </div>
 
-                <div class="header-card light-theme">
-                    <div class="portrait-wrapper">
-                        <img src="assets/portrait-light.png" alt="Siddhant Mohan Jha Light Mode Portrait">
+                <!-- 02 TECH STACK -->
+                <div>
+                    <div class="section-header">🛠️ 02 // TECH_STACK <code>~/tech-stack</code></div>
+                    <p style="margin: 0.5rem 0 0.2rem 0; font-weight: bold; font-size: 0.9rem;">🧰 Core Skill Toolbox Grid</p>
+                    <img class="toolbox-img" src="https://skillicons.dev/icons?i=java,js,cpp,cs,ts,react,nodejs,docker,git,github&theme=dark" alt="Toolbox Grid Dark" />
+                </div>
+
+                <!-- 03 SKILL RADARS -->
+                <div>
+                    <div class="section-header">📊 03 // SKILL_RADARS <code>~/skill-radars</code></div>
+                    <div class="grid-2col">
+                        <div class="grid-card">
+                            <strong style="color:#A855F7; margin-bottom:0.5rem;">SELF-RATED SKILLS</strong>
+                            <img src="assets/radar-dark.svg" alt="Skill Radar Dark" />
+                        </div>
+                        <div class="grid-card">
+                            <strong style="color:#A855F7; margin-bottom:0.5rem;">GITHUB LANGUAGE REALITY</strong>
+                            <img src="assets/radar-langs-dark.svg" alt="Language Radar Dark" />
+                        </div>
                     </div>
-                    <h2>SIDDHANT MOHAN JHA</h2>
-                    <h4><code>FULL STACK DEVELOPER</code></h4>
-                    <img class="typing-banner" src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=24&duration=2600&pause=900&color=A855F7&center=true&vCenter=true&width=500&lines=FULL+STACK+DEVELOPER;BUILDING+WEB+APPLICATIONS;BACKEND+%2B+FRONTEND;TURNING+IDEAS+INTO+SOFTWARE" alt="Typing Animation" />
-                    <div class="badges-row">
-                        <a href="https://www.linkedin.com/in/siddhant-mohan-jha/" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
-                        <a href="mailto:SIDDMJ07@GMAIL.COM"><img src="https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
-                        <a href="https://leetcode.com/u/sidd_cooks/" target="_blank"><img src="https://img.shields.io/badge/LeetCode-FFA116?style=for-the-badge&logo=leetcode&logoColor=black" alt="LeetCode" /></a>
+                </div>
+
+                <!-- 04 THE NUMBERS -->
+                <div>
+                    <div class="section-header">🔢 04 // THE_NUMBERS <code>~/stats</code></div>
+                    <div class="grid-2col">
+                        <div class="grid-card">
+                            <strong style="color:#A855F7; margin-bottom:0.5rem;">GITHUB PROFILE STATISTICS</strong>
+                            <img src="https://github-readme-stats.vercel.app/api?username=Sidd1104&show_icons=true&theme=dark&hide_border=true&bg_color=0d1117&title_color=A855F7&icon_color=A855F7&text_color=c9d1d9" alt="GitHub Stats Dark" />
+                        </div>
+                        <div class="grid-card">
+                            <strong style="color:#A855F7; margin-bottom:0.5rem;">COMMIT STREAK METRICS</strong>
+                            <img src="https://github-readme-streak-stats.herokuapp.com/?user=Sidd1104&theme=dark&hide_border=true&background=0d1117&ring=A855F7&fire=A855F7&currStreakLabel=A855F7" alt="Streak Stats Dark" />
+                        </div>
                     </div>
-                    <div class="view-counter">
-                        <img src="https://komarev.com/ghpvc/?username=Sidd1104&color=A855F7&style=flat-square&label=profile+views" alt="Profile Views" />
+                </div>
+
+                <!-- 05 CONTRIBUTION ACTIVITY -->
+                <div>
+                    <div class="section-header">📈 05 // CONTRIBUTION_ACTIVITY <code>~/activity</code></div>
+                    <div class="center-block" style="gap:1.2rem;">
+                        <img src="assets/metrics-dark.svg" style="width:100%; height:auto;" alt="Metrics 3D Dark" />
+                        <img src="https://raw.githubusercontent.com/Sidd1104/Sidd1104/output/snake-dark.svg" style="width:100%; height:auto;" alt="Snake Dark" />
+                    </div>
+                </div>
+
+                <!-- 06 DEVELOPER TERMINAL -->
+                <div>
+                    <div class="section-header">◈ 06 // DEVELOPER_TERMINAL <code>~/connect</code></div>
+                    <div class="center-block">
+                        <div class="terminal-block" style="width:100%; box-sizing:border-box;">
+                            ┌──────────────────────────────────────────────────────────┐<br>
+                            │ SYSTEM // SIDDHANT MOHAN JHA                             │<br>
+                            ├──────────────────────────────────────────────────────────┤<br>
+                            │ $ ./status --summary                                     │<br>
+                            │ ROLE     : FULL STACK DEVELOPER                          │<br>
+                            │ EXPLORING: RAG PIPELINES, VECTOR DATABASES, NEXT.JS       │<br>
+                            │ WORKFLOW : BUILD &amp; FINISH                                │<br>
+                            └──────────────────────────────────────────────────────────┘
+                        </div>
+                        <h3 style="color:#A855F7; margin: 1rem 0 0.5rem 0;">Let's build something meaningful.</h3>
+                        <div class="badge-row">
+                            <a href="https://www.linkedin.com/in/siddhant-mohan-jha/" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
+                            <a href="mailto:SIDDMJ07@GMAIL.COM"><img src="https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
+                            <a href="https://leetcode.com/u/sidd_cooks/" target="_blank"><img src="https://img.shields.io/badge/LeetCode-FFA116?style=for-the-badge&logo=leetcode&logoColor=black" alt="LeetCode" /></a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </article>
 
-        <!-- DEVELOPER TERMINAL FOOTER PREVIEWS SECTION -->
-        <section>
-            <div class="section-title">02 // DEVELOPER TERMINAL FOOTER (DARK &amp; LIGHT)</div>
-            <div class="footer-grid">
 
-                <!-- DARK MODE FOOTER -->
-                <div class="footer-card dark-theme">
-                    <div class="terminal-box">
-                        ┌──────────────────────────────────────────────────────────┐<br>
-                        │ SYSTEM // SIDDHANT MOHAN JHA                             │<br>
-                        ├──────────────────────────────────────────────────────────┤<br>
-                        │ $ ./status --summary                                     │<br>
-                        │ ROLE     : FULL STACK DEVELOPER                          │<br>
-                        │ EXPLORING: RAG PIPELINES, VECTOR DATABASES, NEXT.JS       │<br>
-                        │ WORKFLOW : BUILD &amp; FINISH                                │<br>
-                        └──────────────────────────────────────────────────────────┘
-                    </div>
-
-                    <div class="quote-box">
-                        <strong>Work Ethic:</strong> "I take ownership of what I commit to and follow it through to completion. When a task requires something I don't know yet, I learn it and keep going until it's done."
-                    </div>
-
-                    <h3 style="color: var(--accent-purple); margin: 0.5rem 0 1rem 0;">Let's build something meaningful.</h3>
-
-                    <div class="badges-row">
+        <!-- =================================================================== -->
+        <!--                        GITHUB LIGHT MODE RENDER                     -->
+        <!-- =================================================================== -->
+        <article class="readme-container light-mode">
+            <div class="mode-header">☀️ GITHUB LIGHT MODE (bg: #ffffff | accent: #7e22ce)</div>
+            
+            <div class="readme-body">
+                <!-- HEADER -->
+                <div class="center-block">
+                    <img class="portrait-img" src="assets/portrait-light.png" alt="Siddhant Mohan Jha Light Portrait">
+                    <h2>SIDDHANT MOHAN JHA</h2>
+                    <h4 style="margin:0 0 10px 0;"><code>FULL STACK DEVELOPER</code></h4>
+                    <img class="typing-svg" src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=24&duration=2600&pause=900&color=A855F7&center=true&vCenter=true&width=500&lines=FULL+STACK+DEVELOPER;BUILDING+WEB+APPLICATIONS;BACKEND+%2B+FRONTEND;TURNING+IDEAS+INTO+SOFTWARE" alt="Typing Banner" />
+                    <div class="badge-row">
                         <a href="https://www.linkedin.com/in/siddhant-mohan-jha/" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
                         <a href="mailto:SIDDMJ07@GMAIL.COM"><img src="https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
                         <a href="https://leetcode.com/u/sidd_cooks/" target="_blank"><img src="https://img.shields.io/badge/LeetCode-FFA116?style=for-the-badge&logo=leetcode&logoColor=black" alt="LeetCode" /></a>
                     </div>
+                    <img src="https://komarev.com/ghpvc/?username=Sidd1104&color=A855F7&style=flat-square&label=profile+views" alt="Views Counter" />
                 </div>
 
-                <!-- LIGHT MODE FOOTER -->
-                <div class="footer-card light-theme">
-                    <div class="terminal-box">
-                        ┌──────────────────────────────────────────────────────────┐<br>
-                        │ SYSTEM // SIDDHANT MOHAN JHA                             │<br>
-                        ├──────────────────────────────────────────────────────────┤<br>
-                        │ $ ./status --summary                                     │<br>
-                        │ ROLE     : FULL STACK DEVELOPER                          │<br>
-                        │ EXPLORING: RAG PIPELINES, VECTOR DATABASES, NEXT.JS       │<br>
-                        │ WORKFLOW : BUILD &amp; FINISH                                │<br>
-                        └──────────────────────────────────────────────────────────┘
-                    </div>
+                <hr style="border: 0; border-top: 1px solid #e1e4e8;">
 
+                <!-- 01 WHOAMI -->
+                <div>
+                    <div class="section-header">⚡ 01 // WHOAMI <code>~/whoami</code></div>
+                    <div class="terminal-block">
+                        $ cat about.txt<br>
+                        &gt; NAME      : SIDDHANT MOHAN JHA<br>
+                        &gt; ROLE      : FULL STACK DEVELOPER<br>
+                        &gt; LOCATION  : INDIA<br>
+                        &gt; FOCUS     : SCALABLE WEB APPLICATIONS, BACKEND &amp; FRONTEND ARCHITECTURE
+                    </div>
                     <div class="quote-box">
-                        <strong>Work Ethic:</strong> "I take ownership of what I commit to and follow it through to completion. When a task requires something I don't know yet, I learn it and keep going until it's done."
-                    </div>
-
-                    <h3 style="color: #7e22ce; margin: 0.5rem 0 1rem 0;">Let's build something meaningful.</h3>
-
-                    <div class="badges-row">
-                        <a href="https://www.linkedin.com/in/siddhant-mohan-jha/" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
-                        <a href="mailto:SIDDMJ07@GMAIL.COM"><img src="https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
-                        <a href="https://leetcode.com/u/sidd_cooks/" target="_blank"><img src="https://img.shields.io/badge/LeetCode-FFA116?style=for-the-badge&logo=leetcode&logoColor=black" alt="LeetCode" /></a>
+                        <strong>📌 Overview &amp; Work Ethic:</strong> I take ownership of what I commit to and follow it through to completion. When a task requires something I don't know yet, I learn it and keep going until it's done.
                     </div>
                 </div>
 
+                <!-- 02 TECH STACK -->
+                <div>
+                    <div class="section-header">🛠️ 02 // TECH_STACK <code>~/tech-stack</code></div>
+                    <p style="margin: 0.5rem 0 0.2rem 0; font-weight: bold; font-size: 0.9rem;">🧰 Core Skill Toolbox Grid</p>
+                    <img class="toolbox-img" src="https://skillicons.dev/icons?i=java,js,cpp,cs,ts,react,nodejs,docker,git,github&theme=light" alt="Toolbox Grid Light" />
+                </div>
+
+                <!-- 03 SKILL RADARS -->
+                <div>
+                    <div class="section-header">📊 03 // SKILL_RADARS <code>~/skill-radars</code></div>
+                    <div class="grid-2col">
+                        <div class="grid-card">
+                            <strong style="color:#7e22ce; margin-bottom:0.5rem;">SELF-RATED SKILLS</strong>
+                            <img src="assets/radar-light.svg" alt="Skill Radar Light" />
+                        </div>
+                        <div class="grid-card">
+                            <strong style="color:#7e22ce; margin-bottom:0.5rem;">GITHUB LANGUAGE REALITY</strong>
+                            <img src="assets/radar-langs-light.svg" alt="Language Radar Light" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 04 THE NUMBERS -->
+                <div>
+                    <div class="section-header">🔢 04 // THE_NUMBERS <code>~/stats</code></div>
+                    <div class="grid-2col">
+                        <div class="grid-card">
+                            <strong style="color:#7e22ce; margin-bottom:0.5rem;">GITHUB PROFILE STATISTICS</strong>
+                            <img src="https://github-readme-stats.vercel.app/api?username=Sidd1104&show_icons=true&theme=default&hide_border=true&bg_color=ffffff&title_color=7e22ce&icon_color=7e22ce&text_color=24292e" alt="GitHub Stats Light" />
+                        </div>
+                        <div class="grid-card">
+                            <strong style="color:#7e22ce; margin-bottom:0.5rem;">COMMIT STREAK METRICS</strong>
+                            <img src="https://github-readme-streak-stats.herokuapp.com/?user=Sidd1104&theme=default&hide_border=true&background=ffffff&ring=7e22ce&fire=7e22ce&currStreakLabel=7e22ce" alt="Streak Stats Light" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 05 CONTRIBUTION ACTIVITY -->
+                <div>
+                    <div class="section-header">📈 05 // CONTRIBUTION_ACTIVITY <code>~/activity</code></div>
+                    <div class="center-block" style="gap:1.2rem;">
+                        <img src="assets/metrics-light.svg" style="width:100%; height:auto;" alt="Metrics 3D Light" />
+                        <img src="https://raw.githubusercontent.com/Sidd1104/Sidd1104/output/snake-light.svg" style="width:100%; height:auto;" alt="Snake Light" />
+                    </div>
+                </div>
+
+                <!-- 06 DEVELOPER TERMINAL -->
+                <div>
+                    <div class="section-header">◈ 06 // DEVELOPER_TERMINAL <code>~/connect</code></div>
+                    <div class="center-block">
+                        <div class="terminal-block" style="width:100%; box-sizing:border-box;">
+                            ┌──────────────────────────────────────────────────────────┐<br>
+                            │ SYSTEM // SIDDHANT MOHAN JHA                             │<br>
+                            ├──────────────────────────────────────────────────────────┤<br>
+                            │ $ ./status --summary                                     │<br>
+                            │ ROLE     : FULL STACK DEVELOPER                          │<br>
+                            │ EXPLORING: RAG PIPELINES, VECTOR DATABASES, NEXT.JS       │<br>
+                            │ WORKFLOW : BUILD &amp; FINISH                                │<br>
+                            └──────────────────────────────────────────────────────────┘
+                        </div>
+                        <h3 style="color:#7e22ce; margin: 1rem 0 0.5rem 0;">Let's build something meaningful.</h3>
+                        <div class="badge-row">
+                            <a href="https://www.linkedin.com/in/siddhant-mohan-jha/" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
+                            <a href="mailto:SIDDMJ07@GMAIL.COM"><img src="https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
+                            <a href="https://leetcode.com/u/sidd_cooks/" target="_blank"><img src="https://img.shields.io/badge/LeetCode-FFA116?style=for-the-badge&logo=leetcode&logoColor=black" alt="LeetCode" /></a>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </section>
+        </article>
+
     </main>
 </body>
 </html>
