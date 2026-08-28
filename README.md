@@ -1,7 +1,4 @@
-# SIDDHANT MOHAN JHA — Futuristic GitHub Profile
-
-> **Workspace Documentation & Profile README Template**
-> Primary Accent: `#A855F7` (Neon Purple) | Theme: Cyber / Developer
+<!-- SIDDHANT MOHAN JHA | Full Stack Developer | GitHub Profile -->
 
 ---
 
@@ -13,9 +10,9 @@
 
   <!-- PORTRAIT -->
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/portrait-dark.png">
-    <source media="(prefers-color-scheme: light)" srcset="assets/portrait-light.png">
-    <img src="assets/portrait-dark.png" width="260" alt="Portrait of Siddhant Mohan Jha">
+    <source media="(prefers-color-scheme: dark)" srcset="assets/portrait-anim-dark.gif">
+    <source media="(prefers-color-scheme: light)" srcset="assets/portrait-anim-light.gif">
+    <img src="assets/portrait-anim-dark.gif" width="260" alt="Siddhant Mohan Jha">
   </picture>
 
   <br /><br />
@@ -78,9 +75,14 @@ $ cat about.txt
 #### 🧰 Core Skill Toolbox Grid
 <p>
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://skillicons.dev/icons?i=java,js,cpp,cs,ts,react,nodejs,docker,git,github&theme=dark">
-    <source media="(prefers-color-scheme: light)" srcset="https://skillicons.dev/icons?i=java,js,cpp,cs,ts,react,nodejs,docker,git,github&theme=light">
-    <img src="https://skillicons.dev/icons?i=java,js,cpp,cs,ts,react,nodejs,docker,git,github&theme=dark" height="48" alt="Core Skill Toolbox Grid">
+    <source media="(prefers-color-scheme: dark)" srcset="https://skillicons.dev/icons?i=java,js,cpp,cs,ts&theme=dark">
+    <source media="(prefers-color-scheme: light)" srcset="https://skillicons.dev/icons?i=java,js,cpp,cs,ts&theme=light">
+    <img src="https://skillicons.dev/icons?i=java,js,cpp,cs,ts&theme=dark" height="48" alt="Languages: Java JS C++ C# TypeScript">
+  </picture>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://skillicons.dev/icons?i=react,nodejs,docker,git,github&theme=dark">
+    <source media="(prefers-color-scheme: light)" srcset="https://skillicons.dev/icons?i=react,nodejs,docker,git,github&theme=light">
+    <img src="https://skillicons.dev/icons?i=react,nodejs,docker,git,github&theme=dark" height="48" alt="Frameworks: React Node Docker Git GitHub">
   </picture>
 </p>
 
@@ -186,9 +188,9 @@ $ cat about.txt
 <br /><br />
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api?username=Sidd1104&show_icons=true&theme=dark&hide_border=true&bg_color=0d1117&title_color=A855F7&icon_color=A855F7&text_color=c9d1d9">
-  <source media="(prefers-color-scheme: light)" srcset="https://github-readme-stats.vercel.app/api?username=Sidd1104&show_icons=true&theme=default&hide_border=true&bg_color=ffffff&title_color=7e22ce&icon_color=7e22ce&text_color=24292e">
-  <img src="https://github-readme-stats.vercel.app/api?username=Sidd1104&show_icons=true&theme=dark&hide_border=true&bg_color=0d1117&title_color=A855F7&icon_color=A855F7&text_color=c9d1d9" alt="Siddhant Mohan Jha GitHub Stats">
+  <source media="(prefers-color-scheme: dark)" srcset="https://gh-readme-stats.vercel.app/api?username=Sidd1104&show_icons=true&theme=dark&hide_border=true&bg_color=0d1117&title_color=A855F7&icon_color=A855F7&text_color=c9d1d9">
+  <source media="(prefers-color-scheme: light)" srcset="https://gh-readme-stats.vercel.app/api?username=Sidd1104&show_icons=true&theme=default&hide_border=true&bg_color=ffffff&title_color=7e22ce&icon_color=7e22ce&text_color=24292e">
+  <img src="https://gh-readme-stats.vercel.app/api?username=Sidd1104&show_icons=true&theme=dark&hide_border=true&bg_color=0d1117&title_color=A855F7&icon_color=A855F7&text_color=c9d1d9" alt="Siddhant Mohan Jha GitHub Stats">
 </picture>
 
 </td>
@@ -199,9 +201,9 @@ $ cat about.txt
 <br /><br />
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-streak-stats.herokuapp.com/?user=Sidd1104&theme=dark&hide_border=true&background=0d1117&ring=A855F7&fire=A855F7&currStreakLabel=A855F7">
-  <source media="(prefers-color-scheme: light)" srcset="https://github-readme-streak-stats.herokuapp.com/?user=Sidd1104&theme=default&hide_border=true&background=ffffff&ring=7e22ce&fire=7e22ce&currStreakLabel=7e22ce">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=Sidd1104&theme=dark&hide_border=true&background=0d1117&ring=A855F7&fire=A855F7&currStreakLabel=A855F7" alt="Siddhant Mohan Jha Commit Streak Stats">
+  <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-streak-stats-salesp07.vercel.app/?user=Sidd1104&theme=dark&hide_border=true&background=0d1117&ring=A855F7&fire=A855F7&currStreakLabel=A855F7">
+  <source media="(prefers-color-scheme: light)" srcset="https://github-readme-streak-stats-salesp07.vercel.app/?user=Sidd1104&theme=default&hide_border=true&background=ffffff&ring=7e22ce&fire=7e22ce&currStreakLabel=7e22ce">
+  <img src="https://github-readme-streak-stats-salesp07.vercel.app/?user=Sidd1104&theme=dark&hide_border=true&background=0d1117&ring=A855F7&fire=A855F7&currStreakLabel=A855F7" alt="Siddhant Mohan Jha Commit Streak Stats">
 </picture>
 
 </td>
