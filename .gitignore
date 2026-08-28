@@ -1,0 +1,19 @@
+# Source photograph - exclude from repository
+LinkedIn Profile.jpeg
+
+# Environment & Credentials
+.env
+.env.*
+*.pem
+*.key
+credentials.json
+secrets.json
+token.txt
+
+# OS & Editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+__pycache__/
+*.pyc

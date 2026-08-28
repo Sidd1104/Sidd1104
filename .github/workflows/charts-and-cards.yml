@@ -1,0 +1,19 @@
+# charts-and-cards.yml
+# Note:
+#   Project cards generation (scripts/cards.py) was intentionally skipped.
+#   GitHub language radar automation is handled separately via .github/workflows/radar.yml.
+
+name: Charts and Cards Generator
+
+on:
+  workflow_dispatch:
+
+jobs:
+  generate-assets:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Notice
+        run: echo "Project cards generation is skipped as intended."

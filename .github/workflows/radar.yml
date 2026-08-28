@@ -1,0 +1,46 @@
+name: GitHub Language Radar Generator
+
+on:
+  schedule:
+    - cron: '0 0 * * 0' # Weekly on Sundays at 00:00 UTC
+  workflow_dispatch:
+
+concurrency:
+  group: profile-radar
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  generate-radar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install Dependencies
+        run: pip install Pillow
+
+      - name: Generate GitHub Language Radar SVGs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python scripts/radar.py --github Sidd1104 -o assets/radar-langs --limit 7 --values --curve 0.4 --exclude "shell,makefile,dockerfile,batchfile,procfile"
+
+      - name: Commit and Push Language Radar SVGs (Only if changed)
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "github-actions[bot]"
+          git add assets/radar-langs-dark.svg assets/radar-langs-light.svg
+          if git diff --staged --quiet; then
+            echo "No changes detected in language radar SVGs."
+          else
+            git commit -m "chore: refresh GitHub language radar"
+            git push
+          fi

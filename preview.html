@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Futuristic GitHub Profile - Local Preview</title>
+    <style>
+        :root {
+            --bg-color: #090d16;
+            --card-bg: #131822;
+            --border-color: #30363d;
+            --text-main: #c9d1d9;
+            --text-muted: #8b949e;
+            --accent-purple: #A855F7;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1.5rem;
+            width: 100%;
+            max-width: 1100px;
+        }
+
+        h1 {
+            color: var(--accent-purple);
+            margin: 0 0 0.5rem 0;
+            font-size: 2rem;
+            letter-spacing: 1px;
+        }
+
+        p {
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        .preview-container {
+            width: 100%;
+            max-width: 1100px;
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        .section-title {
+            color: var(--accent-purple);
+            font-size: 1.25rem;
+            margin-bottom: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-left: 3px solid var(--accent-purple);
+            padding-left: 0.75rem;
+        }
+
+        .header-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+            gap: 2rem;
+            width: 100%;
+        }
+
+        .header-card {
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            padding: 2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .header-card.dark-theme {
+            background-color: #0d1117;
+            color: #c9d1d9;
+        }
+
+        .header-card.light-theme {
+            background-color: #ffffff;
+            color: #24292e;
+            border-color: #e1e4e8;
+        }
+
+        .header-card h2 {
+            margin: 0.75rem 0 0.25rem 0;
+            font-size: 1.8rem;
+            text-align: center;
+        }
+
+        .header-card h4 {
+            margin: 0 0 1rem 0;
+            text-align: center;
+        }
+
+        .header-card code {
+            background-color: #161b22;
+            color: #58a6ff;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .portrait-wrapper {
+            width: 260px;
+            margin-bottom: 0.5rem;
+        }
+
+        .portrait-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .typing-banner {
+            max-width: 100%;
+            height: auto;
+            margin: 0.75rem 0 1.25rem 0;
+        }
+
+        .badges-row {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .badges-row img {
+            height: 28px;
+        }
+
+        .view-counter img {
+            height: 22px;
+        }
+
+        .radar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+            gap: 2rem;
+            width: 100%;
+        }
+
+        .radar-card {
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .radar-card.dark-theme {
+            background-color: #0d1117;
+            color: #c9d1d9;
+        }
+
+        .radar-card.light-theme {
+            background-color: #ffffff;
+            color: #24292e;
+            border-color: #e1e4e8;
+        }
+
+        .radar-wrapper {
+            width: 100%;
+            max-width: 480px;
+            margin-top: 1rem;
+        }
+
+        .radar-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+            gap: 2rem;
+            width: 100%;
+        }
+
+        .footer-card {
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            padding: 2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .footer-card.dark-theme {
+            background-color: #0d1117;
+            color: #c9d1d9;
+        }
+
+        .footer-card.light-theme {
+            background-color: #ffffff;
+            color: #24292e;
+            border-color: #e1e4e8;
+        }
+
+        .terminal-box {
+            background-color: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 1rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: #58a6ff;
+            width: 100%;
+            max-width: 500px;
+            box-sizing: border-box;
+            margin-bottom: 1.25rem;
+        }
+
+        .footer-card.light-theme .terminal-box {
+            background-color: #f6f8fa;
+            border-color: #d0d7de;
+            color: #0969da;
+        }
+
+        .quote-box {
+            border-left: 3px solid var(--accent-purple);
+            padding-left: 1rem;
+            color: #c9d1d9;
+            margin: 0.75rem 0 1.25rem 0;
+            font-style: italic;
+            text-align: left;
+            max-width: 500px;
+        }
+
+        .footer-card.light-theme .quote-box {
+            color: #24292e;
+            border-left-color: #7e22ce;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Siddhant Mohan Jha - Futuristic GitHub Profile</h1>
+        <p>Step 8: Developer Terminal Footer &amp; Contact CTA Sandbox Preview</p>
+    </header>
+
+    <main class="preview-container">
+        <!-- HEADER PREVIEWS SECTION -->
+        <section>
+            <div class="section-title">01 // HEADER PREVIEWS (DARK &amp; LIGHT)</div>
+            <div class="header-grid">
+                <div class="header-card dark-theme">
+                    <div class="portrait-wrapper">
+                        <img src="assets/portrait-dark.svg" alt="Siddhant Mohan Jha Dark Mode Portrait">
+                    </div>
+                    <h2>SIDDHANT MOHAN JHA</h2>
+                    <h4><code>FULL STACK DEVELOPER</code></h4>
+                    <img class="typing-banner" src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=24&duration=2600&pause=900&color=A855F7&center=true&vCenter=true&width=500&lines=FULL+STACK+DEVELOPER;BUILDING+WEB+APPLICATIONS;BACKEND+%2B+FRONTEND;TURNING+IDEAS+INTO+SOFTWARE" alt="Typing Animation" />
+                    <div class="badges-row">
+                        <a href="https://www.linkedin.com/in/siddhant-mohan-jha/" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
+                        <a href="mailto:SIDDMJ07@GMAIL.COM"><img src="https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
+                        <a href="https://leetcode.com/u/sidd_cooks/" target="_blank"><img src="https://img.shields.io/badge/LeetCode-FFA116?style=for-the-badge&logo=leetcode&logoColor=black" alt="LeetCode" /></a>
+                    </div>
+                    <div class="view-counter">
+                        <img src="https://komarev.com/ghpvc/?username=Sidd1104&color=A855F7&style=flat-square&label=profile+views" alt="Profile Views" />
+                    </div>
+                </div>
+
+                <div class="header-card light-theme">
+                    <div class="portrait-wrapper">
+                        <img src="assets/portrait-light.svg" alt="Siddhant Mohan Jha Light Mode Portrait">
+                    </div>
+                    <h2>SIDDHANT MOHAN JHA</h2>
+                    #### <code>FULL STACK DEVELOPER</code>
+                    <img class="typing-banner" src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=24&duration=2600&pause=900&color=A855F7&center=true&vCenter=true&width=500&lines=FULL+STACK+DEVELOPER;BUILDING+WEB+APPLICATIONS;BACKEND+%2B+FRONTEND;TURNING+IDEAS+INTO+SOFTWARE" alt="Typing Animation" />
+                    <div class="badges-row">
+                        <a href="https://www.linkedin.com/in/siddhant-mohan-jha/" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
+                        <a href="mailto:SIDDMJ07@GMAIL.COM"><img src="https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
+                        <a href="https://leetcode.com/u/sidd_cooks/" target="_blank"><img src="https://img.shields.io/badge/LeetCode-FFA116?style=for-the-badge&logo=leetcode&logoColor=black" alt="LeetCode" /></a>
+                    </div>
+                    <div class="view-counter">
+                        <img src="https://komarev.com/ghpvc/?username=Sidd1104&color=A855F7&style=flat-square&label=profile+views" alt="Profile Views" />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DEVELOPER TERMINAL FOOTER PREVIEWS SECTION -->
+        <section>
+            <div class="section-title">02 // DEVELOPER TERMINAL FOOTER (DARK &amp; LIGHT)</div>
+            <div class="footer-grid">
+
+                <!-- DARK MODE FOOTER -->
+                <div class="footer-card dark-theme">
+                    <div class="terminal-box">
+                        ┌──────────────────────────────────────────────────────────┐<br>
+                        │ SYSTEM // SIDDHANT MOHAN JHA                             │<br>
+                        ├──────────────────────────────────────────────────────────┤<br>
+                        │ $ ./status --summary                                     │<br>
+                        │ ROLE     : FULL STACK DEVELOPER                          │<br>
+                        │ EXPLORING: RAG PIPELINES, VECTOR DATABASES, NEXT.JS       │<br>
+                        │ WORKFLOW : BUILD &amp; FINISH                                │<br>
+                        └──────────────────────────────────────────────────────────┘
+                    </div>
+
+                    <div class="quote-box">
+                        <strong>Work Ethic:</strong> "I take ownership of what I commit to and follow it through to completion. When a task requires something I don't know yet, I learn it and keep going until it's done."
+                    </div>
+
+                    <h3 style="color: var(--accent-purple); margin: 0.5rem 0 1rem 0;">Let's build something meaningful.</h3>
+
+                    <div class="badges-row">
+                        <a href="https://www.linkedin.com/in/siddhant-mohan-jha/" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
+                        <a href="mailto:SIDDMJ07@GMAIL.COM"><img src="https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
+                        <a href="https://leetcode.com/u/sidd_cooks/" target="_blank"><img src="https://img.shields.io/badge/LeetCode-FFA116?style=for-the-badge&logo=leetcode&logoColor=black" alt="LeetCode" /></a>
+                    </div>
+                </div>
+
+                <!-- LIGHT MODE FOOTER -->
+                <div class="footer-card light-theme">
+                    <div class="terminal-box">
+                        ┌──────────────────────────────────────────────────────────┐<br>
+                        │ SYSTEM // SIDDHANT MOHAN JHA                             │<br>
+                        ├──────────────────────────────────────────────────────────┤<br>
+                        │ $ ./status --summary                                     │<br>
+                        │ ROLE     : FULL STACK DEVELOPER                          │<br>
+                        │ EXPLORING: RAG PIPELINES, VECTOR DATABASES, NEXT.JS       │<br>
+                        │ WORKFLOW : BUILD &amp; FINISH                                │<br>
+                        └──────────────────────────────────────────────────────────┘
+                    </div>
+
+                    <div class="quote-box">
+                        <strong>Work Ethic:</strong> "I take ownership of what I commit to and follow it through to completion. When a task requires something I don't know yet, I learn it and keep going until it's done."
+                    </div>
+
+                    <h3 style="color: #7e22ce; margin: 0.5rem 0 1rem 0;">Let's build something meaningful.</h3>
+
+                    <div class="badges-row">
+                        <a href="https://www.linkedin.com/in/siddhant-mohan-jha/" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
+                        <a href="mailto:SIDDMJ07@GMAIL.COM"><img src="https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
+                        <a href="https://leetcode.com/u/sidd_cooks/" target="_blank"><img src="https://img.shields.io/badge/LeetCode-FFA116?style=for-the-badge&logo=leetcode&logoColor=black" alt="LeetCode" /></a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+</body>
+</html>

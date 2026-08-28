@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 460" width="100%" height="100%">
+  <style>
+    .radar-title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 16px; font-weight: 700; fill: #e6edf3; text-anchor: middle; letter-spacing: 1px; }
+    .radar-label { font-family: 'JetBrains Mono', monospace, sans-serif; font-size: 12px; font-weight: 600; fill: #e6edf3; }
+    .radar-value { font-family: 'JetBrains Mono', monospace, sans-serif; font-size: 11px; font-weight: 500; fill: #A855F7; }
+    .grid-label { font-family: monospace; font-size: 9px; fill: #8b949e; text-anchor: middle; }
+  </style>
+  <g class="radar-container">
+    <text x="270" y="32" class="radar-title">SKILL RADAR</text>
+    <polygon points="270,213 291.1,223.2 296.3,246 281.7,264.3 258.3,264.3 243.7,246 248.9,223.2" fill="none" stroke="#30363d" stroke-opacity="0.6" stroke-width="1" />
+    <text x="270" y="210" class="grid-label">20</text>
+    <polygon points="270,186 312.2,206.3 322.6,252 293.4,288.7 246.6,288.7 217.4,252 227.8,206.3" fill="none" stroke="#30363d" stroke-opacity="0.6" stroke-width="1" />
+    <text x="270" y="183" class="grid-label">40</text>
+    <polygon points="270,159 333.3,189.5 349,258 305.1,313 234.9,313 191,258 206.7,189.5" fill="none" stroke="#30363d" stroke-opacity="0.6" stroke-width="1" />
+    <text x="270" y="156" class="grid-label">60</text>
+    <polygon points="270,132 354.4,172.7 375.3,264 316.9,337.3 223.1,337.3 164.7,264 185.6,172.7" fill="none" stroke="#30363d" stroke-opacity="0.6" stroke-width="1" />
+    <text x="270" y="129" class="grid-label">80</text>
+    <polygon points="270,105 375.5,155.8 401.6,270 328.6,361.6 211.4,361.6 138.4,270 164.5,155.8" fill="none" stroke="#30363d" stroke-opacity="0.6" stroke-width="1" />
+    <text x="270" y="102" class="grid-label">100</text>
+    <line x1="270" y1="240" x2="270" y2="105" stroke="#30363d" stroke-opacity="0.6" stroke-width="1" />
+    <line x1="270" y1="240" x2="375.5" y2="155.8" stroke="#30363d" stroke-opacity="0.6" stroke-width="1" />
+    <line x1="270" y1="240" x2="401.6" y2="270" stroke="#30363d" stroke-opacity="0.6" stroke-width="1" />
+    <line x1="270" y1="240" x2="328.6" y2="361.6" stroke="#30363d" stroke-opacity="0.6" stroke-width="1" />
+    <line x1="270" y1="240" x2="211.4" y2="361.6" stroke="#30363d" stroke-opacity="0.6" stroke-width="1" />
+    <line x1="270" y1="240" x2="138.4" y2="270" stroke="#30363d" stroke-opacity="0.6" stroke-width="1" />
+    <line x1="270" y1="240" x2="164.5" y2="155.8" stroke="#30363d" stroke-opacity="0.6" stroke-width="1" />
+    <polygon points="270,106.3 365,164.2 395,268.5 316.9,337.3 211.4,361.6 138.4,270 164.5,155.8" fill="#A855F7" fill-opacity="0.28" stroke="#A855F7" stroke-width="2.5" stroke-linejoin="round" />
+    <circle cx="270" cy="106.3" r="4.5" fill="#A855F7" />
+    <circle cx="270" cy="106.3" r="2" fill="#ffffff" />
+    <circle cx="365" cy="164.2" r="4.5" fill="#A855F7" />
+    <circle cx="365" cy="164.2" r="2" fill="#ffffff" />
+    <circle cx="395" cy="268.5" r="4.5" fill="#A855F7" />
+    <circle cx="395" cy="268.5" r="2" fill="#ffffff" />
+    <circle cx="316.9" cy="337.3" r="4.5" fill="#A855F7" />
+    <circle cx="316.9" cy="337.3" r="2" fill="#ffffff" />
+    <circle cx="211.4" cy="361.6" r="4.5" fill="#A855F7" />
+    <circle cx="211.4" cy="361.6" r="2" fill="#ffffff" />
+    <circle cx="138.4" cy="270" r="4.5" fill="#A855F7" />
+    <circle cx="138.4" cy="270" r="2" fill="#ffffff" />
+    <circle cx="164.5" cy="155.8" r="4.5" fill="#A855F7" />
+    <circle cx="164.5" cy="155.8" r="2" fill="#ffffff" />
+    <text x="270" y="77" text-anchor="middle" class="radar-label">Java</text>
+    <text x="270" y="92" text-anchor="middle" class="radar-value">99</text>
+    <text x="394.3" y="136.9" text-anchor="start" class="radar-label">JavaScript</text>
+    <text x="394.3" y="151.9" text-anchor="start" class="radar-value">90</text>
+    <text x="425" y="271.4" text-anchor="start" class="radar-label">TypeScript</text>
+    <text x="425" y="286.4" text-anchor="start" class="radar-value">95</text>
+    <text x="339" y="379.3" text-anchor="start" class="radar-label">React</text>
+    <text x="339" y="394.3" text-anchor="start" class="radar-value">80</text>
+    <text x="201" y="379.3" text-anchor="end" class="radar-label">Node.js / APIs</text>
+    <text x="201" y="394.3" text-anchor="end" class="radar-value">100</text>
+    <text x="115" y="271.4" text-anchor="end" class="radar-label">Databases</text>
+    <text x="115" y="286.4" text-anchor="end" class="radar-value">100</text>
+    <text x="145.7" y="136.9" text-anchor="end" class="radar-label">DSA</text>
+    <text x="145.7" y="151.9" text-anchor="end" class="radar-value">100</text>
+  </g>
+</svg>

@@ -1,0 +1,22 @@
+# Auto-detect text files and perform LF normalization
+* text=auto
+
+# Ensure shell scripts always use LF
+*.sh text eol=lf
+
+# Python scripts
+*.py text eol=lf
+
+# Data & Config files
+*.json text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+
+# Markdown and HTML
+*.md text eol=lf
+*.html text eol=lf
+
+# Image / Vector Assets
+*.svg binary
+*.png binary
+*.jpg binary
