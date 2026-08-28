@@ -13,9 +13,9 @@
 
   <!-- PORTRAIT -->
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/portrait-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="assets/portrait-light.svg">
-    <img src="assets/portrait-dark.svg" width="260" alt="Dot-matrix portrait of Siddhant Mohan Jha">
+    <source media="(prefers-color-scheme: dark)" srcset="assets/portrait-dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="assets/portrait-light.png">
+    <img src="assets/portrait-dark.png" width="260" alt="Portrait of Siddhant Mohan Jha">
   </picture>
 
   <br /><br />
