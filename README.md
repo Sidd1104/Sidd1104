@@ -55,7 +55,7 @@
 
 ---
 
-### ⚡ 01 // WHOAMI
+### ⚡ 01 // WHOAMI `~/whoami`
 
 ```console
 $ cat about.txt
@@ -73,7 +73,16 @@ $ cat about.txt
 
 <br />
 
-### 🛠️ 02 // TECH_STACK
+### 🛠️ 02 // TECH_STACK `~/tech-stack`
+
+#### 🧰 Core Skill Toolbox Grid
+<p>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://skillicons.dev/icons?i=java,js,cpp,cs,ts,react,nodejs,docker,git,github&theme=dark">
+    <source media="(prefers-color-scheme: light)" srcset="https://skillicons.dev/icons?i=java,js,cpp,cs,ts,react,nodejs,docker,git,github&theme=light">
+    <img src="https://skillicons.dev/icons?i=java,js,cpp,cs,ts,react,nodejs,docker,git,github&theme=dark" height="48" alt="Core Skill Toolbox Grid">
+  </picture>
+</p>
 
 #### 💻 Programming Languages
 <p>
@@ -131,7 +140,7 @@ $ cat about.txt
 
 <br />
 
-### 📊 03 // SKILL_RADARS
+### 📊 03 // SKILL_RADARS `~/skill-radars`
 
 <table width="100%">
 <tr>
@@ -166,7 +175,42 @@ $ cat about.txt
 
 <br />
 
-### 📈 04 // CONTRIBUTION_ACTIVITY
+### 🔢 04 // THE_NUMBERS `~/stats`
+
+<table width="100%">
+<tr>
+<td width="50%" align="center">
+
+<b>GITHUB PROFILE STATISTICS</b>
+
+<br /><br />
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api?username=Sidd1104&show_icons=true&theme=dark&hide_border=true&bg_color=0d1117&title_color=A855F7&icon_color=A855F7&text_color=c9d1d9">
+  <source media="(prefers-color-scheme: light)" srcset="https://github-readme-stats.vercel.app/api?username=Sidd1104&show_icons=true&theme=default&hide_border=true&bg_color=ffffff&title_color=7e22ce&icon_color=7e22ce&text_color=24292e">
+  <img src="https://github-readme-stats.vercel.app/api?username=Sidd1104&show_icons=true&theme=dark&hide_border=true&bg_color=0d1117&title_color=A855F7&icon_color=A855F7&text_color=c9d1d9" alt="Siddhant Mohan Jha GitHub Stats">
+</picture>
+
+</td>
+<td width="50%" align="center">
+
+<b>COMMIT STREAK METRICS</b>
+
+<br /><br />
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-streak-stats.herokuapp.com/?user=Sidd1104&theme=dark&hide_border=true&background=0d1117&ring=A855F7&fire=A855F7&currStreakLabel=A855F7">
+  <source media="(prefers-color-scheme: light)" srcset="https://github-readme-streak-stats.herokuapp.com/?user=Sidd1104&theme=default&hide_border=true&background=ffffff&ring=7e22ce&fire=7e22ce&currStreakLabel=7e22ce">
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=Sidd1104&theme=dark&hide_border=true&background=0d1117&ring=A855F7&fire=A855F7&currStreakLabel=A855F7" alt="Siddhant Mohan Jha Commit Streak Stats">
+</picture>
+
+</td>
+</tr>
+</table>
+
+<br />
+
+### 📈 05 // CONTRIBUTION_ACTIVITY `~/activity`
 
 <div align="center">
 
@@ -190,7 +234,7 @@ $ cat about.txt
 
 <br />
 
-### ◈ 05 // DEVELOPER_TERMINAL
+### ◈ 06 // DEVELOPER_TERMINAL `~/connect`
 
 <div align="center">
 
