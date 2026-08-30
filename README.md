@@ -65,8 +65,8 @@ $ cat about.txt
 #### 📌 Overview & Work Ethic
 > I take ownership of what I commit to and follow it through to completion. When a task requires something I don't know yet, I learn it and keep going until it's done.
 
-#### 🔬 Recent Project — DigiLens.OS
-> Built **DigiLens.OS** — an AI-powered research and document assistant focused on financial document analysis. The system processes uploaded documents through RAG pipelines and vector database retrieval, enabling intelligent question answering over complex financial data.
+#### 🔬 Recent Project — Diligence.OS
+> Built **DiligenceOS** — an AI-powered research and document assistant focused on financial document analysis. The system processes uploaded documents through RAG pipelines and vector database retrieval, enabling intelligent question answering over complex financial data.
 
 <br />
 
