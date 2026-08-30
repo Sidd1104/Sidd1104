@@ -10,9 +10,9 @@
 
   <!-- PORTRAIT -->
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/portrait-anim-dark.gif">
-    <source media="(prefers-color-scheme: light)" srcset="assets/portrait-anim-light.gif">
-    <img src="assets/portrait-anim-dark.gif" width="260" alt="Siddhant Mohan Jha">
+    <source media="(prefers-color-scheme: dark)" srcset="assets/portrait-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/portrait-light.svg">
+    <img src="assets/portrait-dark.svg" width="260" alt="Siddhant Mohan Jha">
   </picture>
 
   <br /><br />

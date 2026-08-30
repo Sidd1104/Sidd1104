@@ -99,14 +99,29 @@ def generate_dot_matrix_svg(
         raise FileNotFoundError(f"Input image not found: {image_path}")
 
     with Image.open(image_path) as orig_img:
-        orig_w, orig_h = orig_img.size
+        has_alpha = orig_img.mode in ("RGBA", "LA") or (orig_img.mode == "P" and "transparency" in orig_img.info)
+        if has_alpha:
+            orig_rgba = orig_img.convert("RGBA")
+            r, g, b, a = orig_rgba.split()
+            rgb_img = Image.merge("RGB", (r, g, b))
+        else:
+            orig_rgba = None
+            rgb_img = orig_img.convert("RGB")
+
+        orig_w, orig_h = rgb_img.size
 
         aspect_ratio = orig_h / orig_w
         rows = max(1, round(cols * aspect_ratio))
 
-        processed_img = enhance_image(orig_img, equalize=equalize, detail=detail)
+        processed_img = enhance_image(rgb_img, equalize=equalize, detail=detail)
         resized_img = processed_img.resize((cols, rows), Image.Resampling.LANCZOS)
         pixels = resized_img.load()
+
+        if orig_rgba is not None:
+            resized_alpha = a.resize((cols, rows), Image.Resampling.LANCZOS)
+            alpha_pixels = resized_alpha.load()
+        else:
+            alpha_pixels = None
 
     cell_size = 10.0
     svg_width = cols * cell_size
@@ -142,6 +157,9 @@ def generate_dot_matrix_svg(
     for r_idx in range(rows):
         row_delay = (r_idx / max(1, rows - 1)) * (reveal_time - reveal_fade)
         for c_idx in range(cols):
+            if alpha_pixels is not None and alpha_pixels[c_idx, r_idx] < 64:
+                continue
+
             r, g, b = pixels[c_idx, r_idx]
             lum = calculate_luminance(r, g, b)
 
@@ -178,7 +196,7 @@ def generate_dot_matrix_svg(
 
             anim_attr = ""
             if reveal:
-                anim_attr = f' style="animation-delay: {fmt_num(row_delay)}s;"'
+                anim_attr = f' class="dot-node" style="animation-delay: {fmt_num(row_delay)}s;"'
 
             opacity_str = f' opacity="{fmt_num(opacity)}"' if abs(opacity - 1.0) > 0.02 else ""
 
@@ -197,7 +215,7 @@ def main() -> None:
         description="Convert photographic images into futuristic dot-matrix SVG visuals."
     )
     parser.add_argument("input", type=str, help="Path to input source image")
-    parser.add_argument("-o", "--output", type=str, required=True, help="Path to output SVG file")
+    parser.add_argument("-o", "--output", type=str, required=True, help="Path to output SVG file or base path")
     parser.add_argument("--cols", type=int, default=88, help="Number of dot columns (default: 88)")
     parser.add_argument("--equalize", action="store_true", help="Enable histogram tonal equalization")
     parser.add_argument("--detail", type=float, default=0.5, help="Local detail enhancement factor (default: 0.5)")
@@ -213,39 +231,50 @@ def main() -> None:
     args = parser.parse_args()
 
     input_path = Path(args.input)
-    output_path = Path(args.output)
+    output_arg = Path(args.output)
 
     if not input_path.exists():
         print(f"Error: Input file '{input_path}' does not exist.", file=sys.stderr)
         sys.exit(1)
 
-    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_arg.parent.mkdir(parents=True, exist_ok=True)
 
-    try:
-        svg_content = generate_dot_matrix_svg(
-            image_path=input_path,
-            cols=args.cols,
-            equalize=args.equalize,
-            detail=args.detail,
-            use_color=args.color,
-            accent=args.accent,
-            circle_mask=args.circle,
-            invert=args.invert,
-            reveal=args.reveal,
-            reveal_time=args.reveal_time,
-            reveal_fade=args.reveal_fade,
-            mode=args.mode
-        )
+    targets = []
+    if output_arg.suffix.lower() == ".svg":
+        targets.append((output_arg, args.mode))
+    else:
+        # Produce both -dark.svg and -light.svg when base name given
+        dark_file = output_arg.with_name(f"{output_arg.name}-dark.svg")
+        light_file = output_arg.with_name(f"{output_arg.name}-light.svg")
+        targets.append((dark_file, "dark"))
+        targets.append((light_file, "light"))
 
-        with open(output_path, "w", encoding="utf-8") as f:
-            f.write(svg_content)
+    for out_path, mode in targets:
+        try:
+            svg_content = generate_dot_matrix_svg(
+                image_path=input_path,
+                cols=args.cols,
+                equalize=args.equalize,
+                detail=args.detail,
+                use_color=args.color,
+                accent=args.accent,
+                circle_mask=args.circle,
+                invert=args.invert,
+                reveal=args.reveal,
+                reveal_time=args.reveal_time,
+                reveal_fade=args.reveal_fade,
+                mode=mode
+            )
 
-        file_size_kb = output_path.stat().st_size / 1024.0
-        print(f"Successfully generated dot-matrix SVG: {output_path} ({file_size_kb:.1f} KB, cols={args.cols})")
+            with open(out_path, "w", encoding="utf-8") as f:
+                f.write(svg_content)
 
-    except Exception as e:
-        print(f"Error generating dot-matrix SVG: {e}", file=sys.stderr)
-        sys.exit(1)
+            file_size_kb = out_path.stat().st_size / 1024.0
+            print(f"Successfully generated dot-matrix SVG ({mode}): {out_path} ({file_size_kb:.1f} KB, cols={args.cols})")
+
+        except Exception as e:
+            print(f"Error generating dot-matrix SVG for {out_path}: {e}", file=sys.stderr)
+            sys.exit(1)
 
 
 if __name__ == "__main__":
