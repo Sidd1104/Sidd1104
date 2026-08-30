@@ -148,7 +148,7 @@ def render_radar_svg(
         ring_label_color = "#8b949e"
     else:
         text_color = "#1f2328"
-        subtext_color = "#7e22ce"
+        subtext_color = "#A855F7"
         grid_stroke = "#d0d7de"
         grid_opacity = "0.8"
         polygon_fill = accent
