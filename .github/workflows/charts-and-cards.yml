@@ -1,19 +1,44 @@
-# charts-and-cards.yml
-# Note:
-#   Project cards generation (scripts/cards.py) was intentionally skipped.
-#   GitHub language radar automation is handled separately via .github/workflows/radar.yml.
-
 name: Charts and Cards Generator
 
 on:
+  schedule:
+    - cron: '0 0 * * *' # Daily at 00:00 UTC
   workflow_dispatch:
 
+concurrency:
+  group: profile-cards
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
 jobs:
-  generate-assets:
+  generate-cards:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Notice
-        run: echo "Project cards generation is skipped as intended."
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Generate GitHub Stat Card SVGs
+        env:
+          METRICS_TOKEN: ${{ secrets.METRICS_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python scripts/cards.py --username Sidd1104 -o assets/stats
+
+      - name: Commit and Push Stat Card SVGs (Only if changed)
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "github-actions[bot]"
+          git add assets/stats-dark.svg assets/stats-light.svg
+          if git diff --staged --quiet; then
+            echo "No changes detected in stat card SVGs."
+          else
+            git commit -m "chore: refresh GitHub stat card SVGs"
+            git push
+          fi

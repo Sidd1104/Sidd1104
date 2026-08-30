@@ -179,36 +179,13 @@ $ cat about.txt
 
 ### 🔢 04 // THE_NUMBERS `~/stats`
 
-<table width="100%">
-<tr>
-<td width="50%" align="center">
-
-<b>GITHUB PROFILE STATISTICS</b>
-
-<br /><br />
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api?username=Sidd1104&show_icons=true&theme=dark&hide_border=true&bg_color=0d1117&title_color=A855F7&icon_color=A855F7&text_color=c9d1d9">
-  <source media="(prefers-color-scheme: light)" srcset="https://github-readme-stats.vercel.app/api?username=Sidd1104&show_icons=true&theme=default&hide_border=true&bg_color=ffffff&title_color=7e22ce&icon_color=7e22ce&text_color=24292e">
-  <img src="https://github-readme-stats.vercel.app/api?username=Sidd1104&show_icons=true&theme=dark&hide_border=true&bg_color=0d1117&title_color=A855F7&icon_color=A855F7&text_color=c9d1d9" alt="Siddhant Mohan Jha GitHub Stats">
-</picture>
-
-</td>
-<td width="50%" align="center">
-
-<b>COMMIT STREAK METRICS</b>
-
-<br /><br />
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://streak-stats.demolab.com/?user=Sidd1104&theme=dark&hide_border=true&background=0d1117&ring=A855F7&fire=A855F7&currStreakLabel=A855F7">
-  <source media="(prefers-color-scheme: light)" srcset="https://streak-stats.demolab.com/?user=Sidd1104&theme=default&hide_border=true&background=ffffff&ring=7e22ce&fire=7e22ce&currStreakLabel=7e22ce">
-  <img src="https://streak-stats.demolab.com/?user=Sidd1104&theme=dark&hide_border=true&background=0d1117&ring=A855F7&fire=A855F7&currStreakLabel=A855F7" alt="Siddhant Mohan Jha Commit Streak Stats">
-</picture>
-
-</td>
-</tr>
-</table>
+<div align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/stats-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/stats-light.svg">
+    <img src="assets/stats-dark.svg" width="100%" alt="GitHub Profile Statistics for Sidd1104">
+  </picture>
+</div>
 
 <br />
 
