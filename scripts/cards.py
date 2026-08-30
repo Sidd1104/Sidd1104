@@ -58,10 +58,11 @@ def fetch_rest_stats(username: str, token: Optional[str] = None) -> Dict[str, in
 
 def fetch_graphql_stats(username: str, token: Optional[str] = None) -> Optional[Dict[str, int]]:
     """
-    Fetches contribution count for the past year and calculates current streak using GraphQL API.
-    Returns dict with total_contributions and current_streak, or None if failed/no token.
+    Fetches contribution count for the past year and calculates streaks using GraphQL API.
+    Returns dict with total_contributions, current_streak, longest_streak or None if failed/no token.
     """
     if not token:
+        print("Warning: GraphQL API fetch skipped: No token provided.", file=sys.stderr)
         return None
 
     query = """
@@ -92,6 +93,11 @@ def fetch_graphql_stats(username: str, token: Optional[str] = None) -> Optional[
     try:
         with urllib.request.urlopen(req) as resp:
             res_data = json.loads(resp.read().decode())
+            if "errors" in res_data:
+                err_msg = json.dumps(res_data["errors"])
+                print(f"Warning: GraphQL API fetch failed: {err_msg}", file=sys.stderr)
+                return None
+
             cal = (
                 res_data.get("data", {})
                 .get("user", {})
@@ -105,14 +111,24 @@ def fetch_graphql_stats(username: str, token: Optional[str] = None) -> Optional[
                 for day in week.get("contributionDays", []):
                     days.append(day)
 
-            days_sorted = sorted(days, key=lambda x: x["date"], reverse=True)
+            days_chrono = sorted(days, key=lambda x: x["date"])
+            longest_streak = 0
+            curr_streak = 0
+            for d in days_chrono:
+                if d["contributionCount"] > 0:
+                    curr_streak += 1
+                    longest_streak = max(longest_streak, curr_streak)
+                else:
+                    curr_streak = 0
+
+            days_rev = sorted(days, key=lambda x: x["date"], reverse=True)
             current_streak = 0
             idx = 0
-            if days_sorted and days_sorted[0]["contributionCount"] == 0:
+            if days_rev and days_rev[0]["contributionCount"] == 0:
                 idx = 1
 
-            for i in range(idx, len(days_sorted)):
-                if days_sorted[i]["contributionCount"] > 0:
+            for i in range(idx, len(days_rev)):
+                if days_rev[i]["contributionCount"] > 0:
                     current_streak += 1
                 else:
                     break
@@ -120,6 +136,7 @@ def fetch_graphql_stats(username: str, token: Optional[str] = None) -> Optional[
             return {
                 "total_contributions": total_contributions,
                 "current_streak": current_streak,
+                "longest_streak": longest_streak,
             }
     except Exception as e:
         print(f"Warning: GraphQL API fetch failed: {e}", file=sys.stderr)
@@ -145,16 +162,18 @@ def render_stat_card_svg(
     card_bg = "#161b22" if is_dark else "#f6f8fa"
     text_color = "#f0f6fc" if is_dark else "#1f2328"
     label_color = "#8b949e" if is_dark else "#57606a"
-    sub_accent = "#c084fc" if is_dark else "#9333ea"
 
     num_tiles = len(metrics)
     width = 800
     height = 140
-    padding = 16
-    gap = 14
+    padding = 14
+    gap = 10
 
     available_width = width - (padding * 2) - ((num_tiles - 1) * gap)
     tile_width = available_width / num_tiles
+
+    val_font_size = 22 if num_tiles >= 6 else 26
+    lbl_font_size = 9 if num_tiles >= 6 else 10
 
     svg = []
     svg.append(
@@ -164,9 +183,8 @@ def render_stat_card_svg(
     svg.append("    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600;700;800&amp;display=swap');")
     svg.append("    .stat-card { font-family: 'JetBrains Mono', monospace, -apple-system, sans-serif; }")
     svg.append(f"    .tile-bg {{ fill: {card_bg}; stroke: {border_color}; stroke-width: 1px; rx: 8px; ry: 8px; transition: all 0.3s ease; }}")
-    svg.append(f"    .tile-accent {{ fill: {accent}; opacity: 0.85; }}")
-    svg.append(f"    .stat-val {{ font-size: 26px; font-weight: 800; fill: {text_color}; }}")
-    svg.append(f"    .stat-lbl {{ font-size: 10px; font-weight: 600; fill: {label_color}; letter-spacing: 0.8px; }}")
+    svg.append(f"    .stat-val {{ font-size: {val_font_size}px; font-weight: 800; fill: {text_color}; }}")
+    svg.append(f"    .stat-lbl {{ font-size: {lbl_font_size}px; font-weight: 600; fill: {label_color}; letter-spacing: 0.5px; }}")
     svg.append(f"    .stat-icon {{ fill: {accent}; }}")
     svg.append("  </style>")
 
@@ -180,16 +198,13 @@ def render_stat_card_svg(
         svg.append(f'  <g class="stat-card" transform="translate({x:.1f}, {y})">')
         svg.append(f'    <rect width="{tile_width:.1f}" height="{t_h}" class="tile-bg"/>')
         # Top accent pill line
-        svg.append(f'    <rect x="16" y="14" width="28" height="3" rx="1.5" fill="{accent}"/>')
-        
-        # Icon / indicator
-        if icon_svg:
-            svg.append(f'    <g transform="translate({tile_width - 34:.1f}, 14)">{icon_svg}</g>')
+        svg.append(f'    <rect x="12" y="14" width="24" height="3" rx="1.5" fill="{accent}"/>')
 
-        # Value
-        svg.append(f'    <text x="16" y="58" class="stat-val">{value}</text>')
-        # Label
-        svg.append(f'    <text x="16" y="86" class="stat-lbl">{label.upper()}</text>')
+        if icon_svg:
+            svg.append(f'    <g transform="translate({tile_width - 28:.1f}, 12)">{icon_svg}</g>')
+
+        svg.append(f'    <text x="12" y="58" class="stat-val">{value}</text>')
+        svg.append(f'    <text x="12" y="86" class="stat-lbl">{label.upper()}</text>')
         svg.append("  </g>")
 
     svg.append("</svg>")
@@ -226,8 +241,9 @@ def main() -> None:
 
     metrics = []
     if gql_stats is not None:
-        metrics.append(("Contributions", format_number(gql_stats["total_contributions"]), icons["contributions"]))
+        metrics.append(("Total Contributions", format_number(gql_stats["total_contributions"]), icons["contributions"]))
         metrics.append(("Current Streak", f"{gql_stats['current_streak']} Days", icons["streak"]))
+        metrics.append(("Longest Streak", f"{gql_stats['longest_streak']} Days", icons["streak"]))
 
     metrics.append(("Repositories", format_number(rest_stats["public_repos"]), icons["repos"]))
     metrics.append(("Total Stars", format_number(rest_stats["total_stars"]), icons["stars"]))
@@ -248,7 +264,7 @@ def main() -> None:
         with open(out_path, "w", encoding="utf-8") as f:
             f.write(svg_content)
         file_size_kb = out_path.stat().st_size / 1024.0
-        print(f"Successfully generated stat card ({mode}): {out_path} ({file_size_kb:.1f} KB)")
+        print(f"Successfully generated stat card ({mode}): {out_path} ({file_size_kb:.1f} KB, tiles={len(metrics)})")
 
 
 if __name__ == "__main__":
