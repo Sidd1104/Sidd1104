@@ -12,7 +12,7 @@
     <rect width="120.3" height="112" class="tile-bg"/>
     <rect x="12" y="14" width="24" height="3" rx="1.5" fill="#A855F7"/>
     <g transform="translate(92.3, 12)"><path class="stat-icon" d="M8 0a8 8 0 100 16A8 8 0 008 0zm0 3a5 5 0 110 10A5 5 0 018 3zm1 2.5H7v4.25l3.5 2.1.75-1.23-2.75-1.62V5.5z"/></g>
-    <text x="12" y="58" class="stat-val">163</text>
+    <text x="12" y="58" class="stat-val">167</text>
     <text x="12" y="86" class="stat-lbl">TOTAL CONTRIBUTIONS</text>
   </g>
   <g class="stat-card" transform="translate(144.3, 14)">
