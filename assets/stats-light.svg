@@ -12,14 +12,14 @@
     <rect width="120.3" height="112" class="tile-bg"/>
     <rect x="12" y="14" width="24" height="3" rx="1.5" fill="#A855F7"/>
     <g transform="translate(92.3, 12)"><path class="stat-icon" d="M8 0a8 8 0 100 16A8 8 0 008 0zm0 3a5 5 0 110 10A5 5 0 018 3zm1 2.5H7v4.25l3.5 2.1.75-1.23-2.75-1.62V5.5z"/></g>
-    <text x="12" y="58" class="stat-val">179</text>
+    <text x="12" y="58" class="stat-val">188</text>
     <text x="12" y="86" class="stat-lbl">TOTAL CONTRIBUTIONS</text>
   </g>
   <g class="stat-card" transform="translate(144.3, 14)">
     <rect width="120.3" height="112" class="tile-bg"/>
     <rect x="12" y="14" width="24" height="3" rx="1.5" fill="#A855F7"/>
     <g transform="translate(92.3, 12)"><path class="stat-icon" d="M8 0c-.3 0-.6.1-.8.4L2.3 6.9c-.4.5-.4 1.2 0 1.7l4.9 6.5c.2.3.5.4.8.4s.6-.1.8-.4l4.9-6.5c.4-.5.4-1.2 0-1.7L8.8.4C8.6.1 8.3 0 8 0zm0 2.5l4.1 5.5L8 13.5 3.9 8 8 2.5z"/></g>
-    <text x="12" y="58" class="stat-val">1 Days</text>
+    <text x="12" y="58" class="stat-val">2 Days</text>
     <text x="12" y="86" class="stat-lbl">CURRENT STREAK</text>
   </g>
   <g class="stat-card" transform="translate(274.7, 14)">
